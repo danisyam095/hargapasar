@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DETAIL HP</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        header {
+            border-bottom: .5px solid black;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        nav > a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: black;
+        }
+        
+        nav > span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .h3 {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .item-lists {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            padding: .5rem;
+            justify-content: center;
+        }
+        
+        .item-lists > li {
+            list-style: none;
+            border-bottom: .5px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .item-lists > li > span:nth-child(1) {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .list-percen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+        }
+        
+        #inpercen {
+            font-size: 1.2rem;
+            width: 2.5rem;
+            padding: .25rem;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">< Kembali</a>
+            <span>Detail Unit</span>
+        </nav>
+    </header>
+    <main>
+        <h3 class="h3"></h3>
+        <ul class="item-lists">
+            <li>
+                <span>BRAND</span>
+                <span id="brand"></span>
+            </li>
+            <li>
+                <span>GROUP TYPE</span>
+                <span id="group"></span>
+            </li>
+            <li>
+                <span>MODEL</span>
+                <span id="model"></span>
+            </li>
+            <li>
+                <span>OBJ TYPE</span>
+                <span id="objType"></span>
+            </li>
+            <li>
+                <span>OBJ DESC</span>
+                <span id="objDesc"></span>
+            </li>
+            <li>
+                <span>VCODE</span>
+                <span id="vcode"></span>
+            </li>
+            <li>
+                <span>TAHUN</span>
+                <span id="tahun"></span>
+            </li>
+            <li>
+                <span>HARGA PASAR</span>
+                <span id="hp"></span>
+            </li>
+            <li>
+                <span>IN PERCEN</span>
+                <div class="list-percen">
+                    <input type="number" id="inpercen" placeholder="tap" value="75" />
+                    <span>%</span>
+                </div>
+            </li>
+            <li>
+                <span>PINJAMAN</span>
+                <span id="pinjaman"></span>
+            </li>
+        </ul>
+    </main>
+    
+    <script>
+    const apiURL = 'hargapasarfeb25_final.json'
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('ID')
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+        const response = await fetch(apiURL)
+        const db = await response.json()
+        const data = db.find(obj => obj.id === id)
+        if (!data) {
+            console.log('Gagal Memuat Data ...')
+            return
+        }
+        document.querySelector('.h3').innerText = data.objDesc + ' | ' + data.tahun
+        document.getElementById('brand').innerText = data.brand
+        document.getElementById('group').innerText = data.group
+        document.getElementById('model').innerText = data.model
+        document.getElementById('objType').innerText = data.objType
+        document.getElementById('objDesc').innerText = data.objDesc
+        document.getElementById('vcode').innerText = data.vcode
+        document.getElementById('tahun').innerText = data.tahun
+        document.getElementById('hp').innerText = data.hp.toLocaleString()
+        document.getElementById('inpercen').addEventListener('input', () => {
+            document.getElementById('pinjaman').innerText = pinjamanInPercen()
+        })
+        document.getElementById('pinjaman').innerText = pinjamanInPercen()
+        
+        function pinjamanInPercen() {
+            const result = data.hp * document.getElementById('inpercen').value / 100
+            return result.toLocaleString()
+        }
+    })
+</script>
+</body>
+
+</html>
