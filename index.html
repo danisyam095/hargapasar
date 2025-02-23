@@ -78,7 +78,7 @@
                 }
                 results.innerHTML = data.map(item => 
                     `
-                        <form action="/detail.html" method="GET">
+                        <form action="/detail" method="GET">
                             <input type="text" name="ID" value="${item.id}" hidden/>
                             <button class="card" type="submit">${item.objDesc} | ${item.tahun}</button>
                         </form>
