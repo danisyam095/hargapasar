@@ -9,7 +9,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">DS TOOLS</a>
+                <a class="navbar-brand" href="/hargapasar">DS TOOLS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -56,7 +56,7 @@
                     results.innerHTML = ''
                     return
                 }
-                const filteredData = DB.filter(item => item.vcode.includes(query) || item.objDesc.includes(query))
+                const filteredData = DB.filter(item => item.vcode.includes(query) || item.objDesc.includes(query) || item.objType.includes(query))
                 displayResults(filteredData)
                 searchInput.value = query
             })

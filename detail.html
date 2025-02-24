@@ -4,135 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./bootstrap.min.css" type="text/css" media="all" />
     <title>DETAIL HP</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        
-        header {
-            border-bottom: .5px solid black;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-        }
-        
-        nav > a {
-            text-decoration: none;
-            font-size: 1.5rem;
-            color: black;
-        }
-        
-        nav > span {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: block;
-        }
-        
-        .h3 {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-        
-        .item-lists {
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-            padding: .5rem;
-            justify-content: center;
-        }
-        
-        .item-lists > li {
-            list-style: none;
-            border-bottom: .5px solid black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .item-lists > li > span:nth-child(1) {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .list-percen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: .5rem;
-        }
-        
-        #inpercen {
-            font-size: 1.2rem;
-            width: 2.5rem;
-            padding: .25rem;
-            border: none;
-        }
-    </style>
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="/">< Kembali</a>
-            <span>Detail Unit</span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/hargapasar">DS TOOLS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hargapasar">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Downloads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Install PWA</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
-    <main>
-        <h3 class="h3"></h3>
-        <ul class="item-lists">
-            <li>
-                <span>BRAND</span>
-                <span id="brand"></span>
-            </li>
-            <li>
-                <span>GROUP TYPE</span>
-                <span id="group"></span>
-            </li>
-            <li>
-                <span>MODEL</span>
-                <span id="model"></span>
-            </li>
-            <li>
-                <span>OBJ TYPE</span>
-                <span id="objType"></span>
-            </li>
-            <li>
-                <span>OBJ DESC</span>
-                <span id="objDesc"></span>
-            </li>
-            <li>
-                <span>VCODE</span>
-                <span id="vcode"></span>
-            </li>
-            <li>
-                <span>TAHUN</span>
-                <span id="tahun"></span>
-            </li>
-            <li>
-                <span>HARGA PASAR</span>
-                <span id="hp"></span>
-            </li>
-            <li>
-                <span>IN PERCEN</span>
-                <div class="list-percen">
-                    <input type="number" id="inpercen" placeholder="tap" value="75" />
-                    <span>%</span>
-                </div>
-            </li>
-            <li>
-                <span>PINJAMAN</span>
-                <span id="pinjaman"></span>
-            </li>
-        </ul>
+    
+    <main class="container pt-4">
+        <div class="card">
+            <div class="card-header text-center"></div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>BRAND</span>
+                    <span id="brand"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>GROUP TYPE</span>
+                    <span id="group"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>MODEL</span>
+                    <span id="model"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>OBJ TYPE</span>
+                    <span id="objType"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>OBJ DESC</span>
+                    <span id="objDesc"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>VCODE</span>
+                    <span id="vcode"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>TAHUN</span>
+                    <span id="tahun"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>HARGA PASAR</span>
+                    <span id="hp"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>IN PERCEN</span>
+                    <div class="input-group" style="width: 30%">
+                        <input id="inpercen" type="number" class="form-control" placeholder="TAP" aria-describedby="inpercen">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>PINJAMAN</span>
+                    <span id="pinjaman"></span>
+                </li>
+            </ul>
+        </div>
     </main>
     
+    <script src="./bootstrap.bundle.min.js"></script>
     <script>
     const apiURL = 'hargapasarfeb25_final.json'
     const params = new URLSearchParams(window.location.search);
@@ -146,7 +101,7 @@
             console.log('Gagal Memuat Data ...')
             return
         }
-        document.querySelector('.h3').innerText = data.objDesc + ' | ' + data.tahun
+        document.querySelector('.card-header').innerText = data.objDesc + ' | ' + data.tahun
         document.getElementById('brand').innerText = data.brand
         document.getElementById('group').innerText = data.group
         document.getElementById('model').innerText = data.model
