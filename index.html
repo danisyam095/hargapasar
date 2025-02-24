@@ -3,52 +3,42 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./bootstrap.min.css" type="text/css" media="all" />
         <title>Harga Pasar</title>
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-            }
-            
-            main {
-                display: flex;
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-            }
-            
-            h1 {
-                text-align: center;
-                font-size: 2rem;
-            }
-            
-            #search-input {
-                padding: .5rem .25rem;
-                font-size: 1.25rem;
-            }
-            
-            #results {
-                display: flex;
-                flex-direction: column;
-                gap: .5rem;
-            }
-            
-            .card {
-                border: none;
-                padding: 1rem .5rem;
-                width: 100%;
-                font-size: 1rem;
-            }
-        </style>
     </head>
     <body>
-        <main>
-            <h1>HARGA PASAR FEB 2025</h1>
-            <input type="text" id="search-input" placeholder="Masukan VCode Atau Nama Motor" />
-            <section id="results"></section>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">DS TOOLS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hargapasar">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Downloads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Install PWA</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="container d-flex flex-column gap-2 mt-4">
+            <h1 class="text-center">HARGA PASAR FEB 2025</h1>
+            <input class="form-control" type="search" placeholder="Masukan VCode, Type Atau Nama Motor" id="search-input">
+            <section id="results" class="container d-flex flex-column gap-2 mt-4"></section>
         </main>
         
+        <script src="./bootstrap.bundle.min.js"></script>
         <script>
             const apiURL = 'hargapasarfeb25_final.json';
             const results = document.getElementById('results')
@@ -73,14 +63,14 @@
             
             function displayResults(data) {
                 if (data.length === 0) {
-                    results.innerHTML = '<span>Data Tidak Ada</span>'
+                    results.innerHTML = '<span class="badge rounded bg-danger py-2 fs-6">Data Tidak Ada</span>'
                     return
                 }
                 results.innerHTML = data.map(item => 
                     `
                         <form action="/hargapasar/detail.html" method="GET">
                             <input type="text" name="ID" value="${item.id}" hidden/>
-                            <button class="card" type="submit">${item.objDesc} | ${item.tahun}</button>
+                            <button class="btn btn-primary w-100" type="submit">${item.objDesc} | ${item.tahun}</button>
                         </form>
                     `
                 ).join('')
