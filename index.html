@@ -56,7 +56,7 @@
                     results.innerHTML = ''
                     return
                 }
-                const filteredData = DB.filter(item => item.vcode.includes(query) || item.objDesc.includes(query) || item.objType.includes(query))
+                const filteredData = DB.filter(item => item.vcode.includes(query) || item.objDesc.includes(query) || item.objType.includes(query) || item.tahun.includes(query))
                 displayResults(filteredData)
                 searchInput.value = query
             })
